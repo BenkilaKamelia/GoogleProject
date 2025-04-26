@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html >
+  
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nouvel Onglet</title>
+    <script src="https://unpkg.com/akar-icons-fonts"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 15px;
+        gap: 15px;
+      }
+
+      .bar a {
+        text-decoration: none;
+        color: #000;
+        font-size: 13px;
+      }
+
+      .bar a:hover {
+        text-decoration: underline;
+      }
+
+      .search-bar {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        gap: 20px;
+      }
+
+      .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .search input {
+        width: 580px;
+        height: 44px;
+        padding: 0 20px;
+        border: 1px solid #dfe1e5;
+        border-radius: 24px;
+        font-size: 16px;
+      }
+
+      .search input:hover {
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+      }
+
+      .search button {
+        padding: 8px 16px;
+        margin: 0 4px;
+        background-color: #f8f9fa;
+        border: 1px solid #f8f9fa;
+        border-radius: 4px;
+        color: #3c4043;
+        cursor: pointer;
+      }
+
+      .search button:hover {
+        border: 1px solid #dadce0;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      }
+
+      .footer {
+        background-color: #f2f2f2;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-links a {
+        color: #70757a;
+        text-decoration: none;
+        margin-right: 20px;
+        font-size: 14px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-info p {
+        color: #70757a;
+        font-size: 14px;
+      }
+
+      .footer-icons {
+        display: flex;
+        gap: 15px;
+        color: #70757a;
+      }
+      .logo img {
+        max-width: 800px ;
+        height: 70px;
+      }
+      .bar img {
+         width: 40px; /* Choisis la taille que tu veux */
+        height: 40px;
+        object-fit: cover; /* Pour bien couper l'image */
+        border-radius: 50%; /* Pour rendre l'image ronde */
+        border: 1px solid #ccc; /* Petite bordure grise (facultatif) */
+      }
+    </style>
+  </head>
+  <body>
+    <section class="bar">
+      <div class="link"><a href="{% url 'Mapage:gmail' %}">Gmail</a></div>
+      <div class="link"><a href="{% url 'Mapage:images'%}">Images</a></div>
+      <div class="icon"><i class="ai-dot-grid-fill"></i></div>
+      <div class="img"><img src="{% static '\images\profile.jpg' %}" alt="Profile Picture"/></div>
+    </section>
+
+    <section class="search-bar">
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google Logo" />
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search Google or type a URL" />
+        <div style="display: flex; gap: 8px;">
+          <button>Google Search</button>
+          <button>I'm Feeling Lucky</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer-links">
+        <a href="#">Advertising</a>
+        <a href="#">Business</a>
+        <a href="#">About</a>
+        <a href="#">How Search works</a>
+      </div>
+      <div class="footer-info">
+        <p>© 2023 Google LLC</p>
+      </div>
+      <div class="footer-icons">
+        <i class="ai-globe"></i>
+        <i class="ai-settings"></i>
+        <i class="ai-help-circle"></i>
+        <i class="ai-user"></i>
+      </div>
+    </section>
+    
+  </body>
+</html>

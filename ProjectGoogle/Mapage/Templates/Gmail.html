@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar-item:hover .sidebar-text {
+            display: inline-block;
+        }
+        .email-item:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .compose-btn:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 768px) {
+            .sidebar-text {
+                display: none;
+            }
+            .sidebar {
+                width: 4rem;
+            }
+            .main-content {
+                margin-left: 4rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="flex h-screen overflow-hidden">
+
+        <!-- Sidebar -->
+        <div class="sidebar bg-white w-64 flex-shrink-0 border-r border-gray-200 flex flex-col transition-all duration-300">
+            <!-- Gmail Logo -->
+            <div class="p-4 flex items-center">
+                <div class="text-red-500 text-2xl font-bold">Gmail</div>
+            </div>
+            
+            <!-- Compose Button -->
+            <button class="compose-btn mx-4 my-2 bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold py-3 px-6 rounded-full flex items-center justify-center transition-all duration-200">
+                <i class="fas fa-pen mr-2"></i>
+                <span>Composer</span>
+            </button>
+            
+            <!-- Navigation -->
+            <nav class="mt-6 flex-1">
+                <ul>
+                    <li class="sidebar-item px-4 py-3 flex items-center text-red-600 bg-red-50 rounded-r-full">
+                        <i class="fas fa-inbox text-lg w-6"></i>
+                        <span class="sidebar-text ml-4 font-medium">Boîte de réception</span>
+                        <span class="sidebar-text ml-auto bg-red-600 text-white text-xs px-2 py-1 rounded-full">12</span>
+                    </li>
+                    <li class="sidebar-item px-4 py-3 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                        <i class="fas fa-star text-lg w-6"></i>
+                        <span class="sidebar-text ml-4">Important</span>
+                    </li>
+                    <li class="sidebar-item px-4 py-3 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                        <i class="fas fa-paper-plane text-lg w-6"></i>
+                        <span class="sidebar-text ml-4">Envoyés</span>
+                    </li>
+                    <li class="sidebar-item px-4 py-3 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                        <i class="fas fa-file-alt text-lg w-6"></i>
+                        <span class="sidebar-text ml-4">Brouillons</span>
+                    </li>
+                    <li class="sidebar-item px-4 py-3 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                        <i class="fas fa-trash text-lg w-6"></i>
+                        <span class="sidebar-text ml-4">Corbeille</span>
+                    </li>
+                </ul>
+                
+                <div class="px-4 py-2 mt-8">
+                    <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider sidebar-text">Libellés</h3>
+                    <ul class="mt-2">
+                        <li class="sidebar-item px-4 py-2 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                            <i class="fas fa-circle text-green-500 text-xs w-6"></i>
+                            <span class="sidebar-text ml-2">Travail</span>
+                        </li>
+                        <li class="sidebar-item px-4 py-2 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                            <i class="fas fa-circle text-blue-500 text-xs w-6"></i>
+                            <span class="sidebar-text ml-2">Personnel</span>
+                        </li>
+                        <li class="sidebar-item px-4 py-2 flex items-center text-gray-700 hover:bg-gray-100 rounded-r-full">
+                            <i class="fas fa-circle text-yellow-500 text-xs w-6"></i>
+                            <span class="sidebar-text ml-2">Famille</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- User Profile -->
+            <div class="p-4 flex items-center border-t border-gray-200">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold">U</div>
+                <div class="ml-3 sidebar-text">
+                    <div class="font-medium">Utilisateur</div>
+                    <div class="text-xs text-gray-500">user@gmail.com</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 py-2 px-4 flex items-center">
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-500"></i>
+                        </div>
+                        <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white" placeholder="Rechercher dans les e-mails">
+                    </div>
+                </div>
+                
+                <!-- User Controls -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-gray-800">
+                        <i class="fas fa-cog text-lg"></i>
+                    </button>
+                    <button class="text-gray-600 hover:text-gray-800">
+                        <i class="fas fa-th text-lg"></i>
+                    </button>
+                    <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold">U</div>
+                </div>
+            </header>
+            
+            <!-- Email List -->
+            <div class="flex-1 overflow-y-auto">
+                <!-- Email Actions -->
+                <div class="bg-white border-b border-gray-200 py-2 px-4 flex items-center">
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-gray-800">
+                            <i class="far fa-square text-lg"></i>
+                        </button>
+                        <button class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-redo text-lg"></i>
+                        </button>
+                        <button class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-ellipsis-v text-lg"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="ml-auto flex items-center text-sm text-gray-500">
+                        <span>1-50 sur 1,234</span>
+                        <button class="ml-4 text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="ml-2 text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Email Items -->
+                <div class="divide-y divide-gray-200">
+                    <!-- Starred Email -->
+                    <div class="email-item bg-yellow-50 hover:bg-yellow-100 px-4 py-3 flex items-center cursor-pointer transition-colors duration-150">
+                        <div class="flex items-center w-10">
+                            <button class="text-gray-400 hover:text-yellow-500">
+                                <i class="far fa-star text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center">
+                                <p class="font-semibold text-gray-900 truncate mr-2">LinkedIn</p>
+                                <span class="text-xs text-gray-500">- Nouvelle opportunité pour vous</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Découvrez ces nouveaux postes qui pourraient vous intéresser...</p>
+                        </div>
+                        <div class="ml-4 flex-shrink-0 flex flex-col items-end">
+                            <span class="text-xs font-semibold text-gray-500">12:30</span>
+                            <button class="mt-1 text-gray-400 hover:text-gray-600">
+                                <i class="far fa-trash-alt text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Unread Email -->
+                    <div class="email-item bg-white hover:bg-gray-50 px-4 py-3 flex items-center cursor-pointer transition-colors duration-150">
+                        <div class="flex items-center w-10">
+                            <button class="text-gray-400 hover:text-yellow-500">
+                                <i class="far fa-star text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center">
+                                <p class="font-semibold text-gray-900 truncate mr-2">Amazon</p>
+                                <span class="text-xs text-gray-500">- Votre commande a été expédiée</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Votre commande #12345 a été expédiée et arrivera demain...</p>
+                        </div>
+                        <div class="ml-4 flex-shrink-0 flex flex-col items-end">
+                            <span class="text-xs font-semibold text-gray-500">Hier</span>
+                            <button class="mt-1 text-gray-400 hover:text-gray-600">
+                                <i class="far fa-trash-alt text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Read Email -->
+                    <div class="email-item bg-white hover:bg-gray-50 px-4 py-3 flex items-center cursor-pointer transition-colors duration-150">
+                        <div class="flex items-center w-10">
+                            <button class="text-yellow-500 hover:text-yellow-600">
+                                <i class="fas fa-star text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center">
+                                <p class="font-medium text-gray-900 truncate mr-2">GitHub</p>
+                                <span class="text-xs text-gray-500">- Pull Request: Feature/user-authentication</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Nouvelle pull request de @devteam pour la fonctionnalité d'authentification...</p>
+                        </div>
+                        <div class="ml-4 flex-shrink-0 flex flex-col items-end">
+                            <span class="text-xs text-gray-500">Mar 15</span>
+                            <button class="mt-1 text-gray-400 hover:text-gray-600">
+                                <i class="far fa-trash-alt text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- More emails... -->
+                    <div class="email-item bg-white hover:bg-gray-50 px-4 py-3 flex items-center cursor-pointer transition-colors duration-150">
+                        <div class="flex items-center w-10">
+                            <button class="text-gray-400 hover:text-yellow-500">
+                                <i class="far fa-star text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center">
+                                <p class="font-medium text-gray-900 truncate mr-2">Twitter</p>
+                                <span class="text-xs text-gray-500">- Vous avez de nouveaux abonnés</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">3 nouvelles personnes vous suivent sur Twitter. Découvrez qui...</p>
+                        </div>
+                        <div class="ml-4 flex-shrink-0 flex flex-col items-end">
+                            <span class="text-xs text-gray-500">Mar 14</span>
+                            <button class="mt-1 text-gray-400 hover:text-gray-600">
+                                <i class="far fa-trash-alt text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="email-item bg-white hover:bg-gray-50 px-4 py-3 flex items-center cursor-pointer transition-colors duration-150">
+                        <div class="flex items-center w-10">
+                            <button class="text-gray-400 hover:text-yellow-500">
+                                <i class="far fa-star text-lg"></i>
+                            </button>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center">
+                                <p class="font-medium text-gray-900 truncate mr-2">Netflix</p>
+                                <span class="text-xs text-gray-500">- Nouveaux contenus ajoutés</span>
+                            </div>
+                            <p class="text-sm text-gray-500 truncate">Découvrez les nouveaux films et séries que nous venons d'ajouter...</p>
+                        </div>
+                        <div class="ml-4 flex-shrink-0 flex flex-col items-end">
+                            <span class="text-xs text-gray-500">Mar 12</span>
+                            <button class="mt-1 text-gray-400 hover:text-gray-600">
+                                <i class="far fa-trash-alt text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle star on emails
+            const stars = document.querySelectorAll('.fa-star, .fa-star-o');
+            stars.forEach(star => {
+                star.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (this.classList.contains('far')) {
+                        this.classList.remove('far');
+                        this.classList.add('fas', 'text-yellow-500');
+                    } else {
+                        this.classList.remove('fas', 'text-yellow-500');
+                        this.classList.add('far');
+                    }
+                });
+            });
+            
+            // Select email items
+            const emailItems = document.querySelectorAll('.email-item');
+            emailItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove background from all items
+                    emailItems.forEach(i => {
+                        i.classList.remove('bg-blue-50');
+                    });
+                    // Add background to clicked item
+                    this.classList.add('bg-blue-50');
+                });
+            });
+            
+            // Compose button action
+            const composeBtn = document.querySelector('.compose-btn');
+            composeBtn.addEventListener('click', function() {
+                alert('Fenêtre de composition ouverte!');
+            });
+        });
+    </script>
+</body>
+</html>
